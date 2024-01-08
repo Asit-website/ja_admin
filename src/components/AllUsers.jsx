@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 
-const baseUrl = 'http://localhost:5000';
-// const baseUrl = 'https://school-backend-siwz.onrender.com'
+// const baseUrl = 'http://localhost:5000';
+const baseUrl = 'https://school-backend-siwz.onrender.com'
 
 function AllUsers(){
 
@@ -42,7 +42,7 @@ console.log(users);
     return (
         <div className="w-full flex flex-col gap-10">
 
-<h2 className="mx-auto text-white text-[34px] font-[600]">All Users Details</h2>
+<h2 className="mx-auto text-white text-[34px] font-[600]">All Students Details</h2>
 
 <table >
         <thead >

@@ -4,7 +4,7 @@ import logoSis from '../../img/logosis.svg';
 import vect from '../../img/vect.svg';
 import vect1 from '../../img/vect1.svg';
 import { useMain } from '../../hooks/useMain';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 const Login = () => {
     const navigate = useNavigate();
@@ -35,7 +35,7 @@ const Login = () => {
                 navigate('/welcome');
             }
             else {
-              alert("invalid User")
+              navigate("/")
             }
         }
         else{
@@ -69,7 +69,7 @@ const Login = () => {
                             <input required name='password' value={value.password} onChange={handleChange} type="password" placeholder='Password' />
                             </div>
                             <div className="forgot">
-                                <p>Forgot Password?</p>
+                               <NavLink to="/forgotPassword"><p>Forgot Password?</p></NavLink>
                             </div>
                             <button className='login'>Log in</button>
                             <h4 className='terms'>Terms of Use and Privacy Policy.</h4>

@@ -182,3 +182,51 @@ body{
   border-radius: 5px;
   color: white;
 }
+
+.otp_screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.otp_screen .signin_input {
+  margin-right: 10px;
+}
+
+.otp_screen input {
+  height: 74px;
+  max-height: 100%;
+  max-width: 74px;
+  width: 100%;
+  border: 1px solid #82868C !important;
+  color: #1D212E !important;
+  font-weight: bold;
+  font-size: 36px;
+  text-align: center;
+  padding: 0px 0px !important;
+}
+
+.otp_screen input::placeholder {
+  color: #1D212E;
+  font-weight: bold;
+  font-size: 40px;
+  text-align: center;
+}
+.verify_again {
+  margin-top: 30px;
+}
+
+.verify_again p {
+  text-align: center;
+  color: #74788D;
+  font-weight: 400;
+  font-size: 16px;
+}
+.verify_again span {
+  color: #161B22;
+  text-decoration: underline;
+}
+.lofin{
+  display: block;
+  margin: auto;
+}

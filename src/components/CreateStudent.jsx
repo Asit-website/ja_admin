@@ -1,16 +1,15 @@
 import {  useState } from "react";
 import toast from "react-hot-toast";
 
-const baseUrl = 'http://localhost:5000';
-// const baseUrl = 'https://school-backend-siwz.onrender.com'
+// const baseUrl = 'http://localhost:5000';
+const baseUrl = 'https://school-backend-siwz.onrender.com'
 
 function CreateProduct({setSelectedItem}){
 
     const [formData , setFormData]  = useState({
     name:"",
     email:"",
-    password:""
-
+    password:"",
     })
 
     const changeHandler = (e)=>{
@@ -65,18 +64,20 @@ function CreateProduct({setSelectedItem}){
         }} class="max-w-sm mx-auto w-full ">
         
           <div class="mb-5">
-            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-            <input  type="text" onChange={changeHandler} name="name" value={formData.title} id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Student Name" required />
+            <label htmlFor="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+            <input  type="text" onChange={changeHandler} name="name" value={formData.name} id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Student Name" required />
           </div>
         
           <div class="mb-5">
-            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-            <input  type="email" onChange={changeHandler} id="email" value={formData.description} name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="student@gmail.com" required />
+            <label htmlFor="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+            <input  type="email" onChange={changeHandler} id="email" value={formData.email} name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="student@gmail.com" required />
           </div>
         
+         
+
           <div class="mb-5">
-            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-            <input  type="password" onChange={changeHandler} id="password" name="password" value={formData.price} class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Password" required />
+            <label htmlFor="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+            <input  type="password" onChange={changeHandler} id="password" name="password" value={formData.password} class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Password" required />
           </div>
          
        

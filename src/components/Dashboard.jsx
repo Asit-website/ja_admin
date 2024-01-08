@@ -23,7 +23,7 @@ function Dashboard(){
             localStorage.removeItem('ja_user');
             localStorage.removeItem('ja_token');
 
-            navigate("/");
+            navigate("/login");
 
             toast.success("Successfuly logout");
    

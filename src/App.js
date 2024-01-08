@@ -12,6 +12,12 @@ import Login from './components/auth/Login';
 import MainState from './context/MainState';
 import Welcome from './components/Welcome';
 import Dashboard from './components/Dashboard';
+import StudentLogin from './components/auth/StudentLogin';
+import ForgotPass from './components/auth/ForgotPass';
+import GetOtp from './components/auth/GetOtp';
+import ResetPassword from './components/auth/ResetPassword';
+import Otp from './components/auth/Otp';
+// import OtpInput from './components/auth/OtpInput';
 function App() {
   return (
     <>
@@ -20,8 +26,13 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/login' element={<Login />} />
+            <Route path='/studentLogin' element={<StudentLogin/>}/>
             <Route path='/welcome' element={<Welcome/>}/>
             <Route path='/dashboard' element={<Dashboard/>}/>
+            <Route path="forgotPassword" element={<ForgotPass/>}/>
+            <Route path="/getOtp" element={<GetOtp/>} />
+            <Route path='reset-password' element={<ResetPassword/>}/>
+            <Route path='/otpInp' element={<Otp/>}/>
           </Routes>
         </BrowserRouter>
       </MainState>
