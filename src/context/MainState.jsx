@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import MainContext from "./MainContext";
 
-// const baseUrl = 'http://localhost:5000';
-const baseUrl = 'https://school-backend-siwz.onrender.com'
+const baseUrl = 'http://localhost:5000';
+// const baseUrl = 'https://school-backend-siwz.onrender.com'
 
 const MainState = (props) => {
   const [user, setUser] = useState({})
