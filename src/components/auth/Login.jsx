@@ -61,11 +61,11 @@ const Login = () => {
                          <form className='form_inp' onSubmit={handleSubmit}>
                             <div className='t_inp'>
                             <img className='vect' src={vect} alt="vect" />
-                            <input name='email' value={value.email} onChange={handleChange} type="email" placeholder='Email' />
+                            <input required name='email' value={value.email} onChange={handleChange} type="email" placeholder='Email' />
                             </div>
                             <div className='t_inp'>
                             <img className='vect1' src={vect1} alt="vect1" />
-                            <input name='password' value={value.password} onChange={handleChange} type="password" placeholder='Password' />
+                            <input required name='password' value={value.password} onChange={handleChange} type="password" placeholder='Password' />
                             </div>
                             <div className="forgot">
                                 <p>Forgot Password?</p>
