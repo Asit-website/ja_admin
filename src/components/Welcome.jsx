@@ -1,16 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom';
 
 const Welcome = () => {
     const navigate = useNavigate();
     let user = JSON.parse(localStorage.getItem('ja_user'));
+
+     useEffect(()=>{
+ setTimeout(()=>{
+  navigate("/dashboard")
+ },4000)
+     },[])
+
     return (
         <>
             <div className="welcome_main">
                 <div className="welcome_page">
                     <div className="welcome_sect">
                         <h3>Welcome <span>{user.email}</span> to JA Discovery</h3>
-                        <div className="log_btn">
+                        {/* <div className="log_btn">
                             <NavLink to="/login"><button>Login</button></NavLink>
                             <button onClick={() => {
                                 localStorage.removeItem('ja_user');
@@ -18,7 +25,7 @@ const Welcome = () => {
                                 alert("logout success")
                                 navigate('/login');
                             }}>Logout</button>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
