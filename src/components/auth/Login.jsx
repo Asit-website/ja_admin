@@ -5,6 +5,7 @@ import vect from '../../img/vect.svg';
 import vect1 from '../../img/vect1.svg';
 import { useMain } from '../../hooks/useMain';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 const Login = () => {
     const navigate = useNavigate();
     const { login,setUser } = useMain();
@@ -26,7 +27,7 @@ const Login = () => {
         // notify(ans.status, ans.message);
         if (ans.status) {
             setUser(ans.user);
-            alert("login success");
+            toast.success("login success");
             localStorage.setItem('ja_user', JSON.stringify(ans.user));
             localStorage.setItem('ja_token', ans.token);
             
