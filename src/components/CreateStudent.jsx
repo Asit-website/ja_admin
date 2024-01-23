@@ -51,19 +51,26 @@ const roleData = [
 function CreateProduct({setSelectedItem}){
 
 
-  // this is used 
 
-  const [selectedBuis, setSelectedBuis] = useState("");
+  const [formData , setFormData]  = useState({
+    name:"",
+    email:"",
+    password:"",
+    buisnessCase:"",
+    role:""
+    })
+
+  // this is used 
 
 
   const [roleState , setRoleState] = useState();
 
 
-  const [selectRole , setSelectRole] = useState("");
 
   useEffect(()=>{
 
-     const buidID = buisnessRole.find(b => b.title == selectedBuis);
+     const buidID = buisnessRole.find(b => b.title ==  formData.buisnessCase);
+     console.log("id",buidID);
 
     const selectedRole = roleData.find(role => role.id == buidID?.id);
 
@@ -73,18 +80,14 @@ if (selectedRole) {
     setRoleState([]);
   }
 
-   },[selectedBuis])
+   },[formData.buisnessCase])
 
 
   //  end ***
 
 
-    const [formData , setFormData]  = useState({
-    name:"",
-    email:"",
-    password:"",
-    
-    })
+ 
+    console.log("formda" ,formData);
 
     const changeHandler = (e)=>{
       const {name , value} = e.target;
@@ -100,12 +103,7 @@ if (selectedRole) {
 
       const toastId = toast.loading("Loading...");
 
-  setFormData({
-      ...formData,
-      buisnessCase: selectedBuis,
-      role: selectRole,
-    });
-
+    console.log("form" ,formData);
 
       try{
             const response = await fetch(`${baseUrl}/student/postStudent` , {
@@ -169,7 +167,13 @@ if (selectedRole) {
           <div class="mb-5">
           <label htmlFor="BuisnessCase" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">BuisnessCase</label>
             <select required name="" onChange={(e)=>{
-              setSelectedBuis(e.target.value)}} value={selectedBuis} id="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              setFormData((prev)=>(
+                {
+                  ...prev ,
+                  buisnessCase: e.target.value
+                }
+              ))
+            }} value={formData.buisnessCase} id="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
               <option value="" selected>BuisnessCase</option>
               {
                 buisnessRole.map((item )=>(
@@ -183,11 +187,14 @@ if (selectedRole) {
           <div class="mb-5">
           <label htmlFor="Role" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>
 
-            <select required name="role" onChange={(e)=>setSelectRole(e.target.value)} id="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <select required name="role" value={formData.role} onChange={(e)=>setFormData((prev)=>({
+              ...prev ,
+              role : e.target.value
+            }))} id="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
               <option value="" selected>Role</option>
               {
                 roleState?.map((item ,index)=>(
-                  <option key={index} value="">{item}</option>
+                  <option key={index} value={item}>{item}</option>
                 ))
               }
             </select>
