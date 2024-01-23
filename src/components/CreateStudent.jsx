@@ -41,7 +41,7 @@ const roleData = [
     
   },
   {
-    id:3 , 
+    id:4 , 
     data:["singh" , "manish" , "fdfddgfdsfsfsd","f43dfsd"]
     
   },
@@ -53,13 +53,20 @@ function CreateProduct({setSelectedItem}){
 
   // this is used 
 
-  const [selectedBuis, setSelectedBuis] = useState(0);
+  const [selectedBuis, setSelectedBuis] = useState("");
+
+
   const [roleState , setRoleState] = useState();
+
+
+  const [selectRole , setSelectRole] = useState("");
 
   useEffect(()=>{
 
-    const selectedRole = roleData.find(role => role.id == selectedBuis);
-    console.log("sele" , selectedRole);
+     const buidID = buisnessRole.find(b => b.title == selectedBuis);
+
+    const selectedRole = roleData.find(role => role.id == buidID?.id);
+
 if (selectedRole) {
     setRoleState(selectedRole.data);
   } else {
@@ -76,6 +83,7 @@ if (selectedRole) {
     name:"",
     email:"",
     password:"",
+    
     })
 
     const changeHandler = (e)=>{
@@ -89,7 +97,16 @@ if (selectedRole) {
     }
 
      const submitHandler = async()=>{
+
       const toastId = toast.loading("Loading...");
+
+  setFormData({
+      ...formData,
+      buisnessCase: selectedBuis,
+      role: selectRole,
+    });
+
+
       try{
             const response = await fetch(`${baseUrl}/student/postStudent` , {
               method: 'POST',
@@ -117,10 +134,6 @@ if (selectedRole) {
 
       toast.dismiss(toastId);
      }
-
-
-  
-
 
 
     return (
@@ -155,11 +168,12 @@ if (selectedRole) {
 
           <div class="mb-5">
           <label htmlFor="BuisnessCase" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">BuisnessCase</label>
-            <select name="" onChange={(e)=>setSelectedBuis(e.target.value)} value={selectedBuis} id="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <select required name="" onChange={(e)=>{
+              setSelectedBuis(e.target.value)}} value={selectedBuis} id="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
               <option value="" selected>BuisnessCase</option>
               {
                 buisnessRole.map((item )=>(
-                  <option key={item.id} value={item?.id}>{item?.title}</option>
+                  <option key={item.id} value={item?.title}>{item?.title}</option>
                 ))
               }
             </select>
@@ -169,7 +183,7 @@ if (selectedRole) {
           <div class="mb-5">
           <label htmlFor="Role" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>
 
-            <select name="" id="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <select required name="role" onChange={(e)=>setSelectRole(e.target.value)} id="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
               <option value="" selected>Role</option>
               {
                 roleState?.map((item ,index)=>(
